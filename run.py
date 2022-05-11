@@ -58,6 +58,25 @@ def update_sales_worksheet(data):
     print("Update Successful!")
 
 
-datas = get_sales_data()
-sales_data = [int(data) for data in datas]
-update_sales_worksheet(sales_data)
+def calcualte_surplus_data(sales_row):
+    """
+    Calculate Surplus by comparing Sales with Stock
+    """
+    print("Calculating Surplus...")
+    stock = SHEET.worksheet("stock").get_all_values()
+    stock_row = stock[-1]
+    print(stock_row)
+
+
+def main():
+    """
+    Run all program functions
+    """
+    datas = get_sales_data()
+    sales_data = [int(data) for data in datas]
+    update_sales_worksheet(sales_data)
+    calcualte_surplus_data(sales_data)
+
+
+print("Welcome to Love Sandwiches Data Automation:")
+main()
